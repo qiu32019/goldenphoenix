@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.glodphoenix</groupId>
+    <artifactId>glodphoenix-starter-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>glodphoenix-starter-parent</name>
+    <description>glodphoenix-starter-parent</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.6.RELEASE</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- glodphoenix-starter版本 -->
+        <glodphoenix-starter.version>${project.version}</glodphoenix-starter.version>
+        <glodphoenix-swagger.version>${project.version}</glodphoenix-swagger.version>
+        <glodphoenix-web.version>${project.version}</glodphoenix-web.version>
+        <glodphoenix-logging.version>${project.version}</glodphoenix-logging.version>
+        <glodphoenix-mysql.version>${project.version}</glodphoenix-mysql.version>
+        <glodphoenix-redis.version>${project.version}</glodphoenix-redis.version>
+        <glodphoenix-config.version>${project.version}</glodphoenix-config.version>
+
+
+        <!-- 引用包版本 -->
+        <starter.version>2.1.6.RELEASE</starter.version>
+        <jackson-dataformat-yaml.version>2.9.5</jackson-dataformat-yaml.version>
+        <lombok.version>1.18.4</lombok.version>
+        <swagger.version>2.8.0</swagger.version>
+        <fastjson.version>1.2.47</fastjson.version>
+
+        <!-- aop -->
+        <spring-boot-starter-aop.version>2.1.6.RELEASE</spring-boot-starter-aop.version>
+        <aspectjweaver.version>1.8.10</aspectjweaver.version>
+        <javax.el.version>3.0.1-b08</javax.el.version>
+
+        <!--database-->
+        <mysql.connector.version>5.1.40</mysql.connector.version>
+        <druid-spring-boot-starter.version>1.1.13</druid-spring-boot-starter.version>
+        <jdbc-spring-boot-starter.version>1.5.11.RELEASE</jdbc-spring-boot-starter.version>
+
+        <!-- mybatisplus -->
+        <mybatisplus-spring-boot-starter.version>3.0.7.1</mybatisplus-spring-boot-starter.version>
+        <mybatis-plus.version>3.0.7.1</mybatis-plus.version>
+
+        <!-- redis -->
+        <spring-boot-starter-data-redis.version>1.5.9.RELEASE</spring-boot-starter-data-redis.version>
+        <jwt.version>0.7.0</jwt.version>
+
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+
+        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+        <spring.platform.version>Cairo-RELEASE</spring.platform.version>
+        <!--shiro-->
+        <shiro.version>1.4.0</shiro.version>
+
+        <!-- auth -->
+        <kaptcha.version>0.0.9</kaptcha.version>
+
+        <!--utils-->
+        <gson.version>2.8.5</gson.version>
+        <commons.lang.version>2.6</commons.lang.version>
+        <commons.fileupload.version>1.2.2</commons.fileupload.version>
+        <commons.io.version>2.5</commons.io.version>
+        <commons.codec.version>1.10</commons.codec.version>
+        <commons.configuration.version>1.10</commons.configuration.version>
+        <alibaba.cloud.version>2.1.0.RELEASE</alibaba.cloud.version>
+        <sentinel.alibaba.nacos.version>1.6.3</sentinel.alibaba.nacos.version>
+        <spring.cloud.sentinel>0.9.0.RELEASE</spring.cloud.sentinel>
+    </properties>
+
+    <dependencies>
+        <!-- spring-boot-starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <!-- glodphoenix-tools -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+    </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- glodphoenix-boot-starter -->
+            <!-- 自动生成接口文档 -->
+            <dependency>
+                <groupId>com.glodphoenix</groupId>
+                <artifactId>glodphoenix-starter-swagger</artifactId>
+                <version>${glodphoenix-swagger.version}</version>
+            </dependency>
+            <!-- web配置信息 -->
+            <dependency>
+                <groupId>com.glodphoenix</groupId>
+                <artifactId>glodphoenix-starter-web</artifactId>
+                <version>${glodphoenix-web.version}</version>
+            </dependency>
+            <!-- 日志配置信息 -->
+            <dependency>
+                <groupId>com.glodphoenix</groupId>
+                <artifactId>glodphoenix-starter-logging</artifactId>
+                <version>${glodphoenix-logging.version}</version>
+            </dependency>
+            <!-- MYSQL配置信息 -->
+            <dependency>
+                <groupId>com.glodphoenix</groupId>
+                <artifactId>glodphoenix-starter-mysql</artifactId>
+                <version>${glodphoenix-mysql.version}</version>
+            </dependency>
+            <!-- REDIS配置信息 -->
+            <dependency>
+                <groupId>com.glodphoenix</groupId>
+                <artifactId>glodphoenix-starter-redis</artifactId>
+                <version>${glodphoenix-redis.version}</version>
+            </dependency>
+            <!-- 分布式配置中心 -->
+            <dependency>
+                <groupId>com.glodphoenix</groupId>
+                <artifactId>glodphoenix-starter-config</artifactId>
+                <version>${glodphoenix-config.version}</version>
+            </dependency>
+
+            <!-- 工具类 TODO: -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons.lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons.fileupload.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons.codec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-configuration</groupId>
+                <artifactId>commons-configuration</artifactId>
+                <version>${commons.configuration.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>4.4.11</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>4.5.7</version>
+            </dependency>
+
+            <!-- shiro -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
+            <!-- auth -->
+            <dependency>
+                <groupId>com.github.axet</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+
+            <!-- spring-boot-starter -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+                <version>${starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${starter.version}</version>
+            </dependency>
+
+            <!-- 支持识别yml配置 -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>${jackson-dataformat-yaml.version}</version>
+            </dependency>
+
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <scope>provided</scope>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${jdbc-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot-starter-data-redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+
+            <!-- Swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring-boot-starter-aop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>${javax.el.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+                <version>${sentinel.alibaba.nacos.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-transport-simple-http</artifactId>
+                <version>${sentinel.alibaba.nacos.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>${sentinel.alibaba.nacos.version}</version>
+            </dependency>
+
+            <!-- maven-plugin -->
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-plugin-api</artifactId>
+                <version>${maven-plugin-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugin-tools</groupId>
+                <artifactId>maven-plugin-annotations</artifactId>
+                <version>${maven-plugin-annotations.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- 热部署 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>${spring-boot.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring.platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 远程仓库列表 -->
+    <repositories>
+        <repository>
+            <id>nexus-public</id>
+            <name>public Repository</name>
+            <url>http://192.168.2.125:8081/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <!-- 插件仓库列表 -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus-public-plugin</id>
+            <name>plugin public Repository</name>
+            <url>http://192.168.2.125:8081/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <uniqueVersion>false</uniqueVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+        </plugins>
+
+
+        <directory>${project.basedir}/target</directory>
+        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+        <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+
+    </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Snapshot</name>
+            <url>http://192.168.2.125:8081/nexus/content/repositories/snapshots/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+        <repository>
+            <id>releases</id>
+            <name>Release</name>
+            <url>http://192.168.2.125:8081/nexus/content/repositories/snapshots/</url>
+        </repository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <properties>
+                <skip.unit-tests>false</skip.unit-tests>
+                <skip.integration-tests>false</skip.integration-tests>
+            </properties>
+        </profile>
+    </profiles>
+
+    <modules>
+        <module>glodphoenix-starter-web</module>
+        <module>glodphoenix-starter-logging</module>
+        <module>glodphoenix-starter-swagger</module>
+        <module>glodphoenix-starter-mysql</module>
+        <module>glodphoenix-starter-redis</module>
+        <module>goldphoenix-starter-nacos</module>
+		<module>glodphoenix-starter-shiro</module>
+    </modules>
+</project>

@@ -1,0 +1,8 @@
+
+logging:
+  level:
+    org.springframework: info
+  pattern:
+    console: "%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{64})  - %msg%n"
+  file: /logs/${app.group:}/${app.name:${spring.application.name:application}}/${spring.application.name:application}.log
+

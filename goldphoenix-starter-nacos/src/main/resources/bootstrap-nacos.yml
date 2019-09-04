@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: ${app.name}
+  sleuth:
+    enabled: true
+    http:
+      legacy:
+        enabled: true
+  cloud:
+    nacos:
+      config:
+        server-addr: ${app.nacos.addr}
+        file-extension: ${app.nacos.config.ext}
+        prefix: ${app.name}
+      discovery:
+        server-addr: ${app.nacos.addr}
+        ip: ${app.nacos.register-ip}
+        networkInterface: ${app.nacos.network-interface}
+    sentinel:
+      filter:
+        enabled: false
+      eager: true
+      transport:
+        port: ${sentinel.client.port}
+        dashboard: ${app.nacos.sentinal.addr}
+        clientIp: ${sentinel.client.ip}
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+  main:
+    allow-bean-definition-overriding: true
+
+#请求和响应GZIP压缩支持
+
+feign:
+  sentinel:
+    enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+ribbon:
+  eureka:
+    enabled: false
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ${app.management.health.show}
+nacos:
+  dataId: gateway-server-routes.json
+  group: DEFAULT_GROUP

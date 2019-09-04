@@ -1,0 +1,101 @@
+mybatis-plus:
+  enabled: true
+  generic:
+    enabled: true
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: ${app.mapper:com.glodphoenix.modules}.**.entity
+  type-enums-package: ${app.menums:}
+  type-handlers-package: ${app.mhandlers}
+  global-config:
+    #数据库相关配置
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: AUTO
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_NULL
+      #驼峰下划线转换
+      column-underline: true
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+    banner: false
+  #原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+
+spring:
+  # 数据库配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 使用druid数据源
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${app.datasource.host:localhost}:${app.datasource.port:3306}/${app.datasource.database:${app.db:}}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+      username: ${app.datasource.username:}
+      password: ${app.datasource.password:}
+      max-active: 100
+      initial-size: 20
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      max-pool-prepared-statement-per-connection-size: 20
+      #检测连接池泄露
+      removeAbandoned: true
+      removeAbandonedTimeout: 1800
+      logAbandoned: true
+      # encrypt password
+      #filters: config,stat,wall,log4j
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+      connection-properties: "config.decrypt=true;config.decrypt.key=${app.datasource.druid.public-key:};druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000"
+      use-global-data-source-stat: true
+      # WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        enabled: true #是否启用StatFilter默认值true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid2/*"
+        session-stat-enable:
+        session-stat-max-count:
+        principal-session-name:
+        principal-cookie-name:
+        profile-enable:
+
+      # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        enabled: true #是否启用StatViewServlet默认值true
+        url-pattern: "/druid/*"
+        reset-enable: false
+        login-username: admin
+        login-password: admin
+        allow: "127.0.0.1"
+        deny:
+
+##多数据源的配置
+#dynamic:
+#  datasource:
+#    slave1:
+#      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#      url: jdbc:sqlserver://localhost:1433;DatabaseName=renren_security
+#      username: sa
+#      password: 123456
+#    slave2:
+#      driver-class-name: org.postgresql.Driver
+#      url: jdbc:postgresql://localhost:5432/renren_security
+#      username: renren
+#      password: 123456

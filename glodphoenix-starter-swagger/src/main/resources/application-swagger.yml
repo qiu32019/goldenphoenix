@@ -1,0 +1,11 @@
+#api doc
+swagger:
+  enabled: ${app.swagger:false}
+  title: ${app.name:${spring.application.name:Project Name}}
+  description: ${app.description:description}
+  web-base-package: com.goldphoenix.${app.group:**}.${app.name:${spring.application.name:**}}.web
+  author: ${app.author:Unknown}
+  email: ${app.email:}
+  url: ${app.url:}
+  redirect: false
+
