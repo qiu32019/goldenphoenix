@@ -64,7 +64,7 @@
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <spring.platform.version>Cairo-RELEASE</spring.platform.version>
         <!--shiro-->
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.7.1</shiro.version>
 
         <!-- auth -->
         <kaptcha.version>0.0.9</kaptcha.version>
