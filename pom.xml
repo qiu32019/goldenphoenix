@@ -35,7 +35,7 @@
 
 
         <!-- 引用包版本 -->
-        <starter.version>2.1.6.RELEASE</starter.version>
+        <starter.version>2.5.12</starter.version>
         <jackson-dataformat-yaml.version>2.9.5</jackson-dataformat-yaml.version>
         <lombok.version>1.18.4</lombok.version>
         <swagger.version>2.8.0</swagger.version>
